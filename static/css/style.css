@@ -1,0 +1,194 @@
+:root{
+    --mylo:0;
+    --myla:0;
+}
+
+body{
+    width:100%;
+    height: 100vh;
+    background-image: url('/static-files/media/world.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+
+
+
+
+body #loading {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+            background-color: #000;
+  }
+  
+  body #loading #loading-div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+  }
+  
+  body #loading #loading-div span.loading-col {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 3vw;
+    background-color: transparent;
+    margin: 0 1vw;
+    height: calc(3vh * var(--i));
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 3vw;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    border: 1px solid transparent;
+    -webkit-animation-name: load;
+            animation-name: load;
+    -webkit-animation-duration: 2.5s;
+            animation-duration: 2.5s;
+    -webkit-animation-delay: calc(0.25s * var(--i));
+            animation-delay: calc(0.25s * var(--i));
+    -webkit-animation-timing-function: linear;
+            animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+  }
+  
+  body #loading #loading-div span.loading-col i {
+    display: block;
+    -webkit-transform: translateY(3.5vw);
+            transform: translateY(3.5vw);
+  }
+  
+  @-webkit-keyframes load {
+    0% {
+      color: transparent;
+      -webkit-box-shadow: 0 0 0 transparent;
+              box-shadow: 0 0 0 transparent;
+      background-color: transparent;
+      border: 1px solid transparent;
+    }
+    50% {
+      color: white;
+      background-color: rgb(calc(20 + 2 * var(--i)), calc(150 - 10 * var(--i)), calc(20 + 10 * var(--i)));
+      border: 1px solid white;
+    }
+    100% {
+      color: transparent;
+      -webkit-box-shadow: 0 0 0 transparent;
+              box-shadow: 0 0 0 transparent;
+      background-color: transparent;
+      border: 1px solid transparent;
+    }
+  }
+  
+  @keyframes load {
+    0% {
+      color: transparent;
+      -webkit-box-shadow: 0 0 0 transparent;
+              box-shadow: 0 0 0 transparent;
+      background-color: transparent;
+      border: 1px solid transparent;
+    }
+    50% {
+      color: rgb(55, 76, 197);
+      background-color: rgb(calc(20 + 2 * var(--i)), calc(150 - 10 * var(--i)), calc(20 + 10 * var(--i)));
+      border: 1px solid white;
+    }
+    100% {
+      color: transparent;
+      -webkit-box-shadow: 0 0 0 transparent;
+              box-shadow: 0 0 0 transparent;
+      background-color: transparent;
+      border: 1px solid transparent;
+    }
+  }
+  
+
+
+
+
+
+
+
+div.conteiner{
+    height:100%;
+    width:100%;
+}
+div.me{
+    --w:15px;
+    --h:15px;
+    width:var(--w);
+    height:var(--h);
+    border-radius: 50%;
+    border: 2px solid black;
+    background-color:  green;
+    position: absolute;
+    top: calc( var(--myla) * -0.59vh + 47vh);
+    left: calc( var(--mylo) * 0.28vw + 43.5vw);
+    animation-name: me-anim;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+@keyframes me-anim{
+    0%,100%{
+        background-color:  green;
+    }
+    50%{
+        background-color: rgb(64, 211, 64);
+    }
+}
+div.pkt{
+    --w:10px;
+    --h:10px;
+    perspective-origin: center;
+    width: var(--w);
+    height: var(--h);
+    border-radius: 50%;
+    border:2px solid rgb(12, 27, 95);
+    background-color: red;
+    top: calc( var(--la) * -0.59vh + 50vh);
+    left: calc( var(--lo) * 0.28vw + 50vw);
+    transform: translateX(calc(-0.5 * var(--w))) translateY(calc(-0.5 * var(--h)));
+    position: absolute;
+    animation-name: fade-away;
+    animation-timing-function: ease-out;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+@keyframes fade-away {
+    0%{
+        opacity: 1;
+    }
+    90%{
+        opacity: 0.6;
+        border:2px solid transparent;
+        top: calc( var(--myla) * -0.59vh + 48vh);
+        left: calc( var(--mylo) * 0.28vw + 44vw);
+    }
+    100%{
+        opacity: 0;
+        top: calc( var(--myla) * -0.59vh + 48vh);
+        left: calc( var(--mylo) * 0.28vw + 44vw);
+    }
+}
