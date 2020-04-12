@@ -56,10 +56,15 @@ class PacketsMapper:
         try:
             with eventlet.Timeout(3):
                 response = None
-                if self.useProxy:
-                    response = requests.get(url,params=PARAMS,proxies={'http':self.proxy.export_proxy_url()})
-                else:
-                    response = requests.get(url,params=PARAMS)
+                try:
+                    if self.useProxy:
+                        response = requests.get(url,params=PARAMS,proxies={'http':self.proxy.export_proxy_url()})
+                    else:
+                        response = requests.get(url,params=PARAMS)
+                except requests.exceptions.ConnectionError:
+                    print('connection problem')
+                    return {}
+                    
                 content = response.content
                 final = {}
                 final = json.loads(content)
@@ -80,7 +85,6 @@ class PacketsMapper:
         response = requests.get('https://api.ipify.org',params={"format":"json"})
         myip_json = json.loads(response.content)
         data = self.search_in_web(myip_json.get('ip'))
-        print('my data:',data)
         country = data.get("geoplugin_countryName",None)
         if country:
             return Location(country,data.get('geoplugin_city',"Caplital City")).export_data()

@@ -20,6 +20,7 @@ class Location:
         result = data.get('results')[0]
         return {
             "country": result.get('components').get('country'),
+            "country_code": result.get('components').get('country_code'),
             "city":result.get('components').get('city'),
             "latitude":result.get("geometry").get("lat"),
             "longitude":result.get("geometry").get("lng"),

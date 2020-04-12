@@ -1,3 +1,8 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 :root{
     --mylo:0;
     --myla:0;
@@ -191,4 +196,34 @@ div.pkt{
         top: calc( var(--myla) * -0.59vh + 48vh);
         left: calc( var(--mylo) * 0.28vw + 44vw);
     }
+}
+div.dashboard{
+  --w:25vw;
+  --h:5.5vh;
+  width:var(--w);
+  height:var(--h);
+  position: absolute;
+  bottom:0;
+  background-color:#38383896;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0 5px 0 0;
+}
+div.dashboard div.country{
+  padding:0 5px;
+  margin:1vh 0;
+  height:3vh;
+  display: grid;
+  grid-gap: 5%;
+  grid-template-columns: 10% 55% 15%;
+}
+div.dashboard img{
+  max-width: 100%;
+  transform: translateY(-1vh);
+}
+div.dashboard span{
+  --w:0%;
+  height:3vh;
+  width:var(--w);
+  background-image:linear-gradient(90deg,rgb(79, 79, 206) ,rgb(14, 14, 50.0));
 }

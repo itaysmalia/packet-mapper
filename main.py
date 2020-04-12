@@ -38,8 +38,9 @@ def static_files(path):
 
 def callback(data):
     global queue
-    queue.append(data)
-    print("\r%d packets in queue" % len(queue),end="\r")
+    if len(queue) < 2000:
+        queue.append(data)
+        print("\r%d packets in queue" % len(queue),end="\r")
 
 
 def main():
