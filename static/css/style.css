@@ -222,6 +222,7 @@ div.dashboard img{
   transform: translateY(-1vh);
 }
 div.dashboard span{
+  transition: 100ms;
   --w:0%;
   height:3vh;
   width:var(--w);
