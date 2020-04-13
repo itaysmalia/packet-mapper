@@ -6,6 +6,7 @@
 :root{
     --mylo:0;
     --myla:0;
+    --stats-background-color:#323232d5;
 }
 
 body{
@@ -198,21 +199,22 @@ div.pkt{
     }
 }
 div.dashboard{
-  --w:25vw;
+  --w:50vw;
   --h:5.5vh;
   width:var(--w);
   height:var(--h);
   position: absolute;
   bottom:0 !important;
-  background-color:#38383896;
+  background-color:var(--stats-background-color);
   display: flex;
   flex-direction: column;
-  border-radius: 0 5px 0 0;
+  flex-wrap: wrap;
 }
 div.dashboard div.country{
   padding:0 5px;
   margin:1vh 0;
   height:3vh;
+  width:45%;
   display: grid;
   grid-gap: 5%;
   grid-template-columns: 10% 55% 15%;
@@ -227,4 +229,17 @@ div.dashboard span{
   height:3vh;
   width:var(--w);
   background-image:linear-gradient(90deg,rgb(79, 79, 206) ,rgb(14, 14, 50.0));
+}
+div.cake-diagram{
+  position: absolute;
+  bottom: 0;
+  left:50vw;
+  width:50vw;
+  background-color:var(--stats-background-color);
+  padding:0 10.95vw;
+}
+
+div.cake-diagram canvas{
+  height:100%;
+  width:100%;
 }

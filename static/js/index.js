@@ -3,35 +3,24 @@ const conteiner = $('.conteiner')
 let mydata = {}
 let countriesData = {}
 let totalcount = 0;
-
-
-
-
-
-function drawChart() {
-
-  var data = google.visualization.arrayToDataTable([
-    ['Task', 'Hours per Day'],
-    ['Work',     11],
-    ['Eat',      2],
-    ['Commute',  2],
-    ['Watch TV', 2],
-    ['Sleep',    7]
-  ]);
-
-  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-  chart.draw(data, {title: 'Network Traffic'});
+const colors="blue,red,green,yellow,purple,orange,black,black,black,black".split(',')
+const ctx = document.querySelector('div.cake-diagram canvas').getContext('2d');
+const options={
+    animation: {
+        duration: 0 // general animation time
+    },
+    hover: {
+        animationDuration: 0 // duration of animations when hovering an item
+    },
+    responsiveAnimationDuration: 0 ,// animation duration after a resize
+    legend: {
+        display: true,
+        position:'right',
+        labels: {
+            fontColor:'black'
+        }
+    }
 }
-
-
-
-
-
-
-
-
-
 const getpkt = () => {
     $.get('/pkt', (data) => {
         if (data.country){
@@ -42,16 +31,30 @@ const getpkt = () => {
                 countriesData[data.country_code].count++;
             }
             else{
-                countriesData[data.country_code] = {count:0,name:data.country};
+                countriesData[data.country_code] = {count:0,name:data.country,color:colors[Object.keys(countriesData).length]};
                 const dashboard = $('div.dashboard')
-                dashboard.css('--h',`${Object.keys(countriesData).length * 5.5}vh`)
-                dashboard.append(`<div class="country ${data.country_code}"><img alt="${data.country}" src='https://www.countryflags.io/${data.country_code}/flat/64.png' /><span style="--w:${(countriesData[data.country_code].count / totalcount * 70).toFixed(0)}%" class='bar'></span><p class='precent'>${(countriesData[data.country_code].count / totalcount * 100).toFixed(2)}%</p></div><hr />`)
+                let length = Object.keys(countriesData).length
+                if (length <= 5){
+                    dashboard.css('--h',`${length * 5.5}vh`)
+                }
+                dashboard.append(`<div class="country ${data.country_code}"><img alt="${data.country}" src='https://www.countryflags.io/${data.country_code}/flat/64.png' /><span style="--w:${(countriesData[data.country_code].count / totalcount * 70).toFixed(0)}%" class='bar'></span><p class='precent'>${(countriesData[data.country_code].count / totalcount * 100).toFixed(2)}%</p></div>`)
 
             }
             Object.keys(countriesData).map(code => {
                 const element = $('div.dashboard div.country.' + code)
                 element.find('p').html(`${(countriesData[code].count / totalcount * 100).toFixed(2)}%`)
                 element.find('span').css('--w',`${(countriesData[code].count / totalcount * 100).toFixed(0)}%`)
+                new Chart(ctx,{
+                    type:'pie',
+                    data:{
+                        labels:Object.values(countriesData).map(c => c.name),
+                        datasets:[{
+                            backgroundColor: Object.values(countriesData).map(c => c.color),
+                            data:Object.values(countriesData).map(c => c.count),
+                        }],
+                    },
+                    options
+                })
             })
             
         }
