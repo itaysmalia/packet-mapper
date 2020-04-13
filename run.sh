@@ -5,5 +5,5 @@ if [ $(id -u) -ne 0 ]; then
 fi
 echo "when the server is running, refresh the page."
 sleep 3;
-sudo -u $SUDO_USER xdg-open http://localhost:5000
+sudo -u $SUDO_USER xdg-open http://localhost:5000 &
 sudo python3 main.py
