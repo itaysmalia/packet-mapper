@@ -6,7 +6,7 @@
 :root{
     --mylo:0;
     --myla:0;
-    --stats-background-color:#323232d5;
+    --stats-background-color:#3232329d;
 }
 
 body{
@@ -228,7 +228,7 @@ div.dashboard span{
   --w:0%;
   height:3vh;
   width:var(--w);
-  background-image:linear-gradient(90deg,rgb(79, 79, 206) ,rgb(14, 14, 50.0));
+  background-color:rgba(79, 79, 206, 0.541);
 }
 div.cake-diagram{
   position: absolute;
