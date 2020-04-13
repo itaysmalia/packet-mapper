@@ -203,7 +203,7 @@ div.dashboard{
   width:var(--w);
   height:var(--h);
   position: absolute;
-  bottom:0;
+  bottom:0 !important;
   background-color:#38383896;
   display: flex;
   flex-direction: column;

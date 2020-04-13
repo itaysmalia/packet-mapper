@@ -1,2 +1,2 @@
 start http://localhost:5000
-./main.py
+python3 main.py

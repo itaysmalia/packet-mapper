@@ -3,6 +3,35 @@ const conteiner = $('.conteiner')
 let mydata = {}
 let countriesData = {}
 let totalcount = 0;
+
+
+
+
+
+function drawChart() {
+
+  var data = google.visualization.arrayToDataTable([
+    ['Task', 'Hours per Day'],
+    ['Work',     11],
+    ['Eat',      2],
+    ['Commute',  2],
+    ['Watch TV', 2],
+    ['Sleep',    7]
+  ]);
+
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+  chart.draw(data, {title: 'Network Traffic'});
+}
+
+
+
+
+
+
+
+
+
 const getpkt = () => {
     $.get('/pkt', (data) => {
         if (data.country){
@@ -13,7 +42,7 @@ const getpkt = () => {
                 countriesData[data.country_code].count++;
             }
             else{
-                countriesData[data.country_code] = {count:0};
+                countriesData[data.country_code] = {count:0,name:data.country};
                 const dashboard = $('div.dashboard')
                 dashboard.css('--h',`${Object.keys(countriesData).length * 5.5}vh`)
                 dashboard.append(`<div class="country ${data.country_code}"><img alt="${data.country}" src='https://www.countryflags.io/${data.country_code}/flat/64.png' /><span style="--w:${(countriesData[data.country_code].count / totalcount * 70).toFixed(0)}%" class='bar'></span><p class='precent'>${(countriesData[data.country_code].count / totalcount * 100).toFixed(2)}%</p></div><hr />`)
