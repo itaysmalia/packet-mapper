@@ -3,7 +3,7 @@ const conteiner = $('.conteiner')
 let mydata = {}
 let countriesData = {}
 let totalcount = 0;
-const colors="blue,red,green,yellow,purple,orange,black,black,black,black".split(',')
+const colors="blue,red,green,yellow,purple,orange,black,lightblue,lightcoral".split(',')
 const ctx = document.querySelector('div.cake-diagram canvas').getContext('2d');
 const options={
     animation: {
