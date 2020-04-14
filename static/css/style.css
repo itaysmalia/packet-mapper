@@ -228,7 +228,7 @@ div.dashboard span{
   --w:0%;
   height:3vh;
   width:var(--w);
-  background-color:rgba(79, 79, 206, 0.541);
+  background-color:rgb(44, 44, 211);
 }
 div.cake-diagram{
   position: absolute;

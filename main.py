@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from packet_mapper import PacketsMapper
-from flask import Flask,send_from_directory
+from flask import Flask, send_from_directory
 import requests
 import json
 import sys
@@ -20,7 +20,7 @@ def send_pkt():
     global queue
     if queue:
         data=queue.pop(0)
-        print("\r%d packets in queue" % len(queue),end="\r")
+        print(f"\r{len(queue)} packets in queue",end="\r")
         return data
     else:
         return {}
@@ -30,7 +30,8 @@ mapper = None
 @app.route("/mydata")
 def send_mydata():
     return mapper.get_my_location()
-  
+
+
 @app.route('/static-files/<path:path>')
 def static_files(path):
     return send_from_directory('static',path)
@@ -38,10 +39,10 @@ def static_files(path):
 
 def callback(data):
     global queue
-    MAX_PACKETS = 500 #you can change it, my advise, *!DON'T!*
+    MAX_PACKETS = 500 #you can change it, my advice, *!DON'T!*
     if len(queue) < MAX_PACKETS:
         queue.append(data)
-        print("\r%d packets in queue" % len(queue),end="\r")
+        print(f"\r{len(queue)} packets in queue",end="\r")
 
 
 def main():
