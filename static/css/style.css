@@ -136,7 +136,7 @@ body #loading {
 
 
 
-div.conteiner{
+div.container{
     height:100%;
     width:100%;
 }
@@ -230,7 +230,7 @@ div.dashboard span{
   width:var(--w);
   background-color:rgb(44, 44, 211);
 }
-div.cake-diagram{
+div.pie-chart{
   position: absolute;
   bottom: 0;
   left:50vw;
@@ -239,7 +239,7 @@ div.cake-diagram{
   padding:0 10.95vw;
 }
 
-div.cake-diagram canvas{
+div.pie-chart canvas{
   height:100%;
   width:100%;
 }

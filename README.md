@@ -1,5 +1,5 @@
 # packet-mapper
-full stack object to map your packets.
+full stack project to map your packets.
 created by Itay Sin Malia.
 I created this program so we all can see easily from where our network information comes from.
 

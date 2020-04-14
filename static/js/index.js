@@ -1,10 +1,10 @@
 let i = 0;
-const conteiner = $('.conteiner')
+const conteiner = $('div.container')
 let mydata = {}
 let countriesData = {}
 let totalcount = 0;
 const colors="blue,red,green,yellow,purple,orange,black,lightblue,lightcoral".split(',')
-const ctx = document.querySelector('div.cake-diagram canvas').getContext('2d');
+const ctx = document.querySelector('div.pie-chart canvas').getContext('2d');
 const options={
     animation: {
         duration: 0 // general animation time
