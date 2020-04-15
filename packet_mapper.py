@@ -20,14 +20,9 @@ class PacketsMapper:
         
     def start(self):
         if self.threaded:
-            thread = threading.Thread(target=self.start_sniffing)
-            thread.start()
+            AsyncSniffer(filter="ip",prn=self.handle_pkt,store=False).start()
         else:
-            self.start_sniffing()
-            
-    def start_sniffing(self):
-        sniff(filter="ip",prn=self.handle_pkt)
-        
+            sniff(filter="ip",prn=self.handle_pkt,store=False)
     
     def handle_pkt(self,pkt):
         src_ip = pkt[IP].src
